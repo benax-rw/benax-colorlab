@@ -6,11 +6,12 @@ sudo apt update && sudo apt upgrade -y<br>
 <b>Step 2: Install Apache2 and PHP7</b><br>
 sudo apt-get install -y apache2 php7.0 libapache2-mod-php7.0<br>
 sudo chmod -R 777 /var/www/<br>
-cd /var/www/html/<br>
 
 <b>Step 3: Clone benax-colorlab from remote Github</b><br>
-unzip benax-colorlab.zip <br>
-rm benax-colorlab.zip <br>
+cd /var/www/html/<br>
+git clone https://github.com/benax-rw/benax-colorlab <br>
+mv -r benax-colorlab/* .
+rm benax-colorlab <br>
 mv index.html index.html.old<br>
 
 <b>Step 4: Install NeoPixel</b><br>
