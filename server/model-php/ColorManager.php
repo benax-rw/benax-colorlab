@@ -2,7 +2,7 @@
 class ColorManager{
     public function changeColor($color){
 	if(trim($color) == "rainbow"){
-            $func = "rainbowCycle(strip)";
+            $func = "runChase()";
         }
         else{
             $GRB = explode(",",trim($color));

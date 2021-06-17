@@ -62,6 +62,17 @@ th,td{font-size: 20px; font-weight: 700;}
 body {
   padding: 1rem;
 }
+
+.auto-btn{
+    border: 1px solid #EEE; 
+    padding: 20px; background: purple; 
+    border-radius: 8px; 
+    color: #FFF; 
+    width: 100px; 
+    font-size: 22px;
+    cursor: pointer;
+}
+
 </style>
 
 
@@ -73,7 +84,7 @@ ColorLab teaches how light color mixing and light intensity work.<br>
 <div style="100%">
 
 	<span style="font-size: 22px;">Brightness:</span> 
-	<select class="select-css" id="brightness">
+	<select onChange="changeColor()" class="select-css" id="brightness">
 		<option value="255">255</option>
 		<option value="225">225</option>
 		<option value="200">200</option>
@@ -109,7 +120,7 @@ ColorLab teaches how light color mixing and light intensity work.<br>
 	<tr>
 
 	<td>
-	<select class="select-css" id="G">
+	<select onChange="changeColor()" class="select-css" id="G">
 		<option value="255">255</option>
 		<option value="200">200</option>
 		<option value="150">150</option>
@@ -119,7 +130,7 @@ ColorLab teaches how light color mixing and light intensity work.<br>
 	</select>
 	</td>
 	<td>
-	<select class="select-css" id="R">
+	<select onChange="changeColor()"  class="select-css" id="R">
 		<option value="255">255</option>
 		<option value="200">200</option>
 		<option value="150">150</option>
@@ -129,7 +140,7 @@ ColorLab teaches how light color mixing and light intensity work.<br>
 	</select>
 	</td>
 	<td>
-	<select class="select-css" id="B">
+	<select onChange="changeColor()"  class="select-css" id="B">
 		<option value="255">255</option>
 		<option value="200">200</option>
 		<option value="150">150</option>
@@ -137,14 +148,19 @@ ColorLab teaches how light color mixing and light intensity work.<br>
 		<option value="50">50</option>
 		<option value="0">0</option>
 	</select>
-	</td>
-	<td>
-	<button class ="button" onClick="changeColor()">Set</button>
-	</div>
 	</td>
 
 	</tr>
+	
+
+	    
 </table>
+
+    <hr>
+		
+    <div class="auto-btn" onClick="runChase()">Automatic</div>
+
+</div>
 
 <script>
     var request = false;
@@ -168,4 +184,13 @@ ColorLab teaches how light color mixing and light intensity work.<br>
         }         
                 
     }
+    
+    function runChase(){	
+        if(request){
+            request.open('POST','server/process.php', true);
+            request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            request.send("color=rainbow");
+        }         
+                
+    }    
 </script>
